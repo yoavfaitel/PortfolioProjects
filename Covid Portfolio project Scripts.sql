@@ -12,14 +12,14 @@ From CovidDeaths
 Where location = 'Israel'
 Order By 1,2
 
--- Covid cases precentage from toal populatin in israel per day
+-- Covid cases precentage from total population in Israel per day
 
 Select Location,Date, Population,Total_Cases, (Total_Cases/Population)*100 AS PrecentPopulationInfected
 From CovidDeaths
 Where location = 'Israel' 
 Order By 1,2
 
---Max Precentage of Covid cases from population per each locatin
+--Max Precentage of Covid cases from population per locatin
 Select Location, Population,MAX(Total_Cases) AS HighestInfectionCount , MAX(Total_Cases/Population)*100 AS PrecentPopulationInfected
 From CovidDeaths
 Group By Location,population
@@ -44,7 +44,7 @@ Order By PrecentPopulationInfected Desc
 
 Select Location,Max(cast(Total_Deaths as INT)) AS TotalDeathsCount
 from CovidDeaths
-Where continent is not null -- δερτϊι λγι μδιτθψ ξιαωεϊ ωξετιςεϊ αγΰθδ ιηγ ςν ξγιπεϊ.
+Where continent is not null -- Γ€Γ₯Γ±Γ΄ΓΊΓ© Γ«Γ£Γ© Γ¬Γ€Γ©Γ΄Γ¨ΓΈ Γ®Γ©Γ‘ΓΉΓ₯ΓΊ ΓΉΓ®Γ₯Γ΄Γ©Γ²Γ₯ΓΊ Γ‘Γ£Γ Γ¨Γ€ Γ©Γ§Γ£ Γ²Γ­ Γ®Γ£Γ©Γ°Γ₯ΓΊ.
 Group BY Location
 Order BY TotalDeathsCount Desc
 
@@ -52,7 +52,7 @@ Order BY TotalDeathsCount Desc
 -- Death cases from population per continent in descending order
 Select Continent,Max(cast(Total_Deaths as INT)) AS TotalDeathsCount
 from CovidDeaths
-Where continent is not null -- δερτϊι λγι μδιτθψ ξιαωεϊ ωξετιςεϊ αγΰθδ ιηγ ςν ξγιπεϊ.
+Where continent is not null -- Γ€Γ₯Γ±Γ΄ΓΊΓ© Γ«Γ£Γ© Γ¬Γ€Γ©Γ΄Γ¨ΓΈ Γ®Γ©Γ‘ΓΉΓ₯ΓΊ ΓΉΓ®Γ₯Γ΄Γ©Γ²Γ₯ΓΊ Γ‘Γ£Γ Γ¨Γ€ Γ©Γ§Γ£ Γ²Γ­ Γ®Γ£Γ©Γ°Γ₯ΓΊ.
 Group BY Continent
 Order BY TotalDeathsCount Desc
 
@@ -60,7 +60,7 @@ Order BY TotalDeathsCount Desc
 
 Select Population, Continent,(Max(cast(Total_Deaths as INT))/Population)*100 AS TotalDeathsCount
 from CovidDeaths
-Where continent is not null -- δερτϊι λγι μδιτθψ ξιαωεϊ ωξετιςεϊ αγΰθδ ιηγ ξγιπεϊ.
+Where continent is not null -- Γ€Γ₯Γ±Γ΄ΓΊΓ© Γ«Γ£Γ© Γ¬Γ€Γ©Γ΄Γ¨ΓΈ Γ®Γ©Γ‘ΓΉΓ₯ΓΊ ΓΉΓ®Γ₯Γ΄Γ©Γ²Γ₯ΓΊ Γ‘Γ£Γ Γ¨Γ€ Γ©Γ§Γ£ Γ®Γ£Γ©Γ°Γ₯ΓΊ.
 Group BY Population,Continent
 Order BY TotalDeathsCount Desc
 
@@ -69,7 +69,7 @@ Order BY TotalDeathsCount Desc
 Select Location, SUM(Cast(New_Deaths AS INT)) AS TotalDeathsCount
 From CovidDeaths 
 Where Continent Is Null
-And Location not in ('World', 'European Union', 'International') -- μαεγγ ξγιπεϊ
+And Location not in ('World', 'European Union', 'International') -- Γ¬Γ‘Γ₯Γ£Γ£ Γ®Γ£Γ©Γ°Γ₯ΓΊ
 Group By Location 
 Order By TotalDeathsCount Desc
 
